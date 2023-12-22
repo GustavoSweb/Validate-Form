@@ -13,8 +13,16 @@
         method="POST"
         class="flex flex-col items-center w-[100%] h-[100vh] justify-center"
       >
-        <div class="w-[40%] flex flex-col items-center gap-4">
-          <h1 class="w-full justify-start ml-4">Formulario</h1>
+        <div class="w-[70%] md:w-[60%] lg:w-[40%] flex flex-col items-center gap-4">
+          <div class="w-full flex flex-col lg:flex-row justify-around ml-4">
+            <h1>Formulario</h1>
+            
+            <% if(erro){%>
+            <div class="alert alert-danger text-[15px]"><%= erro %></div>
+
+            <%} %>
+          </div>
+
           <div class="flex justify-start flex-wrap gap-2">
             <label for="name" class="font-semibold">Nome:</label>
             <input
@@ -23,6 +31,7 @@
               id="name"
               class="w-full form-control"
               placeholder="Nome..."
+              value="<%= data.name %>"
             />
             <label for="email" class="font-semibold">Email:</label>
             <input
@@ -31,6 +40,7 @@
               id="email"
               class="w-full form-control"
               placeholder="Email..."
+              value="<%= data.email %>"
             />
             <label for="password" class="font-semibold">Senha:</label>
             <input
@@ -39,6 +49,7 @@
               id=""
               class="w-full form-control"
               placeholder="Senha em numeros..."
+              value="<%= data.password %>"
             />
           </div>
           <div class="w-full justify-start ml-4">

@@ -20,7 +20,9 @@ class Validation {
   Check() {
     var msg;
     Object.keys(this.data).forEach((input) => {
-      const option = this.optional.find((a) => a == input);
+      const option = this.optional
+        ? this.optional.find((a) => a == input)
+        : null;
       if (
         this.data[input] == undefined ||
         (this.data[input] == "" && option == null)
@@ -30,8 +32,7 @@ class Validation {
             ? `${names[input]} não pode ser vazio`
             : "Marque todos os campos";
         throw new Error(msg);
-      }
-      if (this.inputs[input] != undefined && option == null) this.inputs[input]();
+      }else if (this.inputs[input] != undefined && option == null) this.inputs[input]();
     });
   }
 }
